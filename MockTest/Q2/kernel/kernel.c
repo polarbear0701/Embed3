@@ -1,0 +1,22 @@
+// -----------------------------------main.c -------------------------------------
+#include "/Users/phantrongnguyen/coding_folder/Embed3/MockTest/Q2/uart/uart1.h"
+void main(){
+// intitialize UART
+uart_init();
+// say hello
+uart_puts("Hello World! This is UART1\n");
+// echo everything back
+while(1) {
+//read each char
+char c = uart_getc();
+if (c>=65 && c <= 90){
+    c +=32;
+}
+else if (c>= 97 && c <=122){
+    c -= 32;
+}
+//send back twice
+uart_sendc(c);
+uart_sendc(c);
+}
+}
